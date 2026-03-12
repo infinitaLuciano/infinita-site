@@ -3,182 +3,754 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>INFINITA | Tecnologia e Sistemas Inteligentes</title>
-  <meta name="description" content="Soluções em inspeção veicular, desenvolvimento de sistemas, IA e automação." />
+  <title>INFINITA | Tecnologia, Inspeção Veicular, IA e Sistemas Inteligentes</title>
+  <meta name="description" content="A INFINITA desenvolve soluções em inspeção veicular, validação de chassi, integração de sistemas, inteligência artificial, automação e desenvolvimento de software." />
+  <meta name="theme-color" content="#081225" />
   <style>
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Arial,Helvetica,sans-serif;
-      background:#0f172a;
-      color:#fff;
-      line-height:1.5;
+    :root {
+      --bg: #071120;
+      --bg-2: #0b1830;
+      --surface: rgba(255,255,255,0.06);
+      --surface-2: rgba(255,255,255,0.09);
+      --border: rgba(255,255,255,0.12);
+      --text: #eef4ff;
+      --muted: #b8c7e3;
+      --primary: #2f6fff;
+      --primary-2: #6d47ff;
+      --accent: #ff7b34;
+      --success: #3dd598;
+      --shadow: 0 18px 60px rgba(0,0,0,0.28);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --max: 1180px;
     }
-    .container{
-      width:min(1100px,92%);
-      margin:0 auto;
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(47,111,255,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(255,123,52,0.13), transparent 22%),
+        linear-gradient(180deg, #071120 0%, #08172d 45%, #071120 100%);
+      line-height: 1.55;
     }
-    header{
-      padding:72px 0 40px;
-      text-align:center;
-      background:linear-gradient(180deg,#020617 0%, #0f172a 100%);
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(var(--max), 92%); margin: 0 auto; }
+    .section { padding: 92px 0; }
+    .section-title {
+      font-size: clamp(2rem, 3.6vw, 3rem);
+      margin: 0 0 14px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
     }
-    h1{
-      margin:0 0 12px;
-      font-size:clamp(2.3rem,5vw,4rem);
-      letter-spacing:1px;
+    .section-text {
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 1.05rem;
     }
-    .subtitle{
-      font-size:1.2rem;
-      color:#cbd5e1;
-      margin-bottom:18px;
+    .center { text-align: center; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #d9e7ff;
+      font-size: 0.92rem;
+      margin-bottom: 18px;
     }
-    .hero-text{
-      max-width:760px;
-      margin:0 auto;
-      color:#e2e8f0;
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: 0 0 16px rgba(47,111,255,0.65);
     }
-    .cta{
-      margin-top:28px;
-      display:flex;
-      gap:14px;
-      justify-content:center;
-      flex-wrap:wrap;
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,17,32,0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .btn{
-      text-decoration:none;
-      padding:14px 22px;
-      border-radius:10px;
-      font-weight:bold;
-      display:inline-block;
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
-    .btn-primary{
-      background:#2563eb;
-      color:#fff;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      font-size: 1rem;
     }
-    .btn-secondary{
-      border:1px solid #475569;
-      color:#fff;
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1d8fff, #6d47ff 55%, #ff7b34);
+      position: relative;
+      box-shadow: 0 12px 30px rgba(48, 111, 255, 0.33);
     }
-    section{
-      padding:56px 0;
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border: 3px solid rgba(255,255,255,0.95);
+      border-radius: 50%;
+      top: 11px;
     }
-    h2{
-      text-align:center;
-      margin:0 0 28px;
-      font-size:2rem;
+    .brand-mark::before { left: 6px; }
+    .brand-mark::after { right: 6px; }
+    .brand-text span { display: block; line-height: 1.05; }
+    .brand-text small {
+      display: block;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.73rem;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
     }
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:22px;
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: #d9e7ff;
+      font-size: 0.97rem;
     }
-    .card{
-      background:#1e293b;
-      border:1px solid #334155;
-      border-radius:16px;
-      padding:24px;
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 10px 24px rgba(47,111,255,0.28);
+      font-weight: 700;
     }
-    .card h3{
-      margin-top:0;
-      color:#fff;
+
+    .hero { padding: 72px 0 34px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
     }
-    .card p{
-      color:#cbd5e1;
-      margin-bottom:0;
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
     }
-    .about{
-      max-width:860px;
-      margin:0 auto;
-      text-align:center;
-      color:#cbd5e1;
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 700px;
+      margin: 0 0 28px;
     }
-    footer{
-      background:#020617;
-      padding:32px 0;
-      text-align:center;
-      color:#cbd5e1;
-      border-top:1px solid #1e293b;
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
     }
-    .contact{
-      text-align:center;
-      font-size:1.05rem;
+    .btn {
+      padding: 15px 22px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 0.98rem;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
     }
-    a.link{
-      color:#93c5fd;
-      text-decoration:none;
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 14px 30px rgba(47,111,255,0.28);
+    }
+    .btn-secondary {
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+    }
+    .btn:hover { transform: translateY(-1px); }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .stat strong {
+      display: block;
+      font-size: 1.28rem;
+      margin-bottom: 4px;
+    }
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(255,123,52,0.28), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-panel {
+      display: grid;
+      gap: 14px;
+    }
+    .mini-card {
+      background: rgba(5,10,20,0.42);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .mini-card strong { display: block; margin-bottom: 6px; }
+    .mini-card p { margin: 0; font-size: 0.94rem; color: var(--muted); }
+    .badge-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.87rem;
+      color: #dce7fb;
+    }
+
+    .logo-strip {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .logo-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 34px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      height: 100%;
+    }
+    .icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, rgba(47,111,255,0.22), rgba(255,123,52,0.16));
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 1.35rem;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.22rem;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .list {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      display: grid;
+      gap: 8px;
+    }
+    .list li::before {
+      content: "•";
+      color: #7aa7ff;
+      margin-right: 8px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .feature-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .feature-box h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+    .feature-box p,
+    .feature-box li { color: var(--muted); }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .timeline-item {
+      border-left: 2px solid rgba(122,167,255,0.55);
+      padding-left: 16px;
+    }
+    .timeline-item strong { display: block; margin-bottom: 4px; }
+
+    .cta-box {
+      padding: 34px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(255,123,52,0.18), transparent 28%),
+        linear-gradient(135deg, rgba(47,111,255,0.16), rgba(109,71,255,0.14));
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .cta-box h3 {
+      margin: 0 0 8px;
+      font-size: 1.8rem;
+    }
+    .cta-box p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      margin-top: 34px;
+    }
+    .contact-card,
+    .contact-panel {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .contact-card a.link {
+      color: #a8c7ff;
+      word-break: break-word;
+    }
+    .contact-lines {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .contact-line {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .contact-line strong { display: block; margin-bottom: 4px; }
+
+    footer {
+      padding: 26px 0 42px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 12px;
+    }
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1020px) {
+      .hero-grid,
+      .split,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .grid-3,
+      .logo-card {
+        grid-template-columns: 1fr 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero { padding-top: 48px; }
+    }
+
+    @media (max-width: 720px) {
+      .section { padding: 74px 0; }
+      .grid-3,
+      .logo-card,
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+      .btn { width: 100%; justify-content: center; }
+      .cta-box { padding: 26px; }
+      .hero-card,
+      .card,
+      .feature-box,
+      .contact-card,
+      .contact-panel { padding: 22px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>INFINITA</h1>
-      <div class="subtitle">Tecnologia e Sistemas Inteligentes</div>
-      <p class="hero-text">
-        Soluções em inspeção veicular, integração de sistemas, desenvolvimento de software,
-        inteligência artificial e automação de processos.
-      </p>
-      <div class="cta">
-        <a class="btn btn-primary" href="#solucoes">Nossas soluções</a>
-        <a class="btn btn-secondary" href="#contato">Fale conosco</a>
+  <div class="nav-wrap">
+    <div class="container nav">
+      <a href="#inicio" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-text">
+          <span>INFINITA</span>
+          <small>TECNOLOGIA E SISTEMAS INTELIGENTES</small>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#solucoes">Soluções</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#empresa">Empresa</a>
+        <a href="#contato">Contato</a>
+        <a class="nav-cta" href="mailto:admin@infinita.tec.br">Fale com a INFINITA</a>
       </div>
     </div>
-  </header>
+  </div>
 
-  <section id="solucoes">
-    <div class="container">
-      <h2>Soluções</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Inspeção Veicular</h3>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Tecnologia para inspeção veicular, software e automação</div>
+          <h1>Construindo soluções inteligentes para operações críticas.</h1>
           <p>
-            Plataformas para vistoria, validação de chassi, integração OBD,
-            leitura sistêmica e apoio tecnológico ao setor automotivo.
+            A INFINITA desenvolve plataformas digitais, integrações, APIs, soluções de inspeção veicular,
+            validação sistêmica, inteligência artificial e automação para empresas, operações técnicas e ambientes regulados.
           </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contato">Solicitar apresentação</a>
+            <a class="btn btn-secondary" href="#solucoes">Conhecer soluções</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>Inspeção</strong>
+              <span>Validação, vistoria, integrações e apoio ao setor automotivo.</span>
+            </div>
+            <div class="stat">
+              <strong>Software</strong>
+              <span>Sistemas web, APIs, painéis corporativos e automação operacional.</span>
+            </div>
+            <div class="stat">
+              <strong>IA</strong>
+              <span>Agentes inteligentes, atendimento e fluxos automatizados.</span>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <h3>Desenvolvimento de Sistemas</h3>
-          <p>
-            Criação de sistemas web, APIs, integrações, automações e soluções
-            sob medida para empresas e operações críticas.
-          </p>
-        </div>
-        <div class="card">
-          <h3>IA e Automação</h3>
-          <p>
-            Agentes inteligentes, atendimento automatizado, análise de dados,
-            fluxos operacionais e integração com canais digitais.
-          </p>
+
+        <div class="hero-card">
+          <div class="hero-panel">
+            <div class="mini-card">
+              <strong>Especialização técnica</strong>
+              <p>
+                Soluções voltadas para inspeção veicular, validação de chassi, leitura OBD,
+                integração entre sistemas e automação de processos operacionais.
+              </p>
+            </div>
+            <div class="mini-card">
+              <strong>Arquitetura moderna</strong>
+              <p>
+                Cloud, integração por API, segurança de domínio, implantação escalável e estrutura pronta para crescimento.
+              </p>
+            </div>
+            <div class="mini-card">
+              <strong>Áreas de atuação</strong>
+              <div class="badge-line">
+                <span class="badge">Inspeção Veicular</span>
+                <span class="badge">Integração DETRAN / ECV</span>
+                <span class="badge">IA & Automação</span>
+                <span class="badge">Desenvolvimento Sob Medida</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <div class="container">
-      <h2>Sobre a INFINITA</h2>
-      <p class="about">
-        A INFINITA é uma empresa de tecnologia focada em soluções inteligentes para o setor
-        automotivo, governamental e corporativo, unindo software, integração de sistemas,
-        infraestrutura digital e automação para construir operações modernas, seguras e escaláveis.
-      </p>
-    </div>
-  </section>
-
-  <section id="contato">
-    <div class="container">
-      <h2>Contato</h2>
-      <div class="contact">
-        <p>Email: <a class="link" href="mailto:admin@infinita.tec.br">admin@infinita.tec.br</a></p>
-        <p>Domínio: <a class="link" href="https://infinita.tec.br">infinita.tec.br</a></p>
+    <section class="logo-strip">
+      <div class="container">
+        <div class="logo-card">
+          <div>VALIDAÇÃO SISTÊMICA</div>
+          <div>DESENVOLVIMENTO DE SOFTWARE</div>
+          <div>INTELIGÊNCIA ARTIFICIAL</div>
+          <div>INFRAESTRUTURA CLOUD</div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="section" id="solucoes">
+      <div class="container center">
+        <div class="eyebrow">Soluções</div>
+        <h2 class="section-title">Tecnologia aplicada a operações reais.</h2>
+        <p class="section-text">
+          Nossa atuação combina conhecimento técnico, integração sistêmica e visão de negócio para entregar soluções robustas,
+          seguras e escaláveis.
+        </p>
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon">🚗</div>
+            <h3>Inspeção Veicular</h3>
+            <p>
+              Soluções voltadas à vistoria, validação de identificação veicular, apoio a leitura eletrônica,
+              automação de etapas e rastreabilidade operacional.
+            </p>
+            <ul class="list">
+              <li>Validação de chassi</li>
+              <li>Integração OBD e dados técnicos</li>
+              <li>Fluxos de conformidade e auditoria</li>
+              <li>Sistemas para operações de vistoria</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="icon">💻</div>
+            <h3>Desenvolvimento de Sistemas</h3>
+            <p>
+              Projetamos e desenvolvemos sistemas corporativos, dashboards, APIs, portais e plataformas sob medida,
+              com foco em performance e crescimento sustentável.
+            </p>
+            <ul class="list">
+              <li>Plataformas web</li>
+              <li>APIs e integrações</li>
+              <li>Painéis gerenciais</li>
+              <li>Softwares personalizados</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="icon">🤖</div>
+            <h3>IA e Automação</h3>
+            <p>
+              Implementamos automações inteligentes, agentes de atendimento, fluxos com IA e análise operacional
+              para reduzir esforço manual e ampliar produtividade.
+            </p>
+            <ul class="list">
+              <li>Agentes para atendimento</li>
+              <li>Integração com WhatsApp</li>
+              <li>Automação de processos</li>
+              <li>Assistentes inteligentes</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="produtos">
+      <div class="container split">
+        <div class="feature-box">
+          <div class="eyebrow">Produtos e frentes estratégicas</div>
+          <h3>Soluções concebidas para ambientes regulados e operações técnicas.</h3>
+          <p>
+            A INFINITA estrutura produtos e módulos que podem ser implantados de forma isolada ou integrada,
+            conforme o fluxo operacional do cliente.
+          </p>
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>Validação de chassi e identificação veicular</strong>
+              <span>Suporte à conformidade, rastreabilidade e comparação sistêmica de dados.</span>
+            </div>
+            <div class="timeline-item">
+              <strong>Plataformas para vistoria e gestão operacional</strong>
+              <span>Painéis, filas, registro técnico, fotos, checklist e monitoramento.</span>
+            </div>
+            <div class="timeline-item">
+              <strong>Integrações e APIs</strong>
+              <span>Conexão com sistemas legados, bases externas e fluxos automatizados.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-box">
+          <div class="eyebrow">Capacidades</div>
+          <h3>Infraestrutura preparada para crescimento.</h3>
+          <ul class="list">
+            <li>Domínio e e-mail corporativo estruturados</li>
+            <li>Site institucional em cloud com alta disponibilidade</li>
+            <li>Arquitetura pronta para portais, APIs e microsserviços</li>
+            <li>Publicação contínua com GitHub + Vercel</li>
+            <li>Proteção e roteamento via Cloudflare</li>
+            <li>Base preparada para novas aplicações da empresa</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="empresa">
+      <div class="container center">
+        <div class="eyebrow">Empresa</div>
+        <h2 class="section-title">Uma empresa de tecnologia com foco prático.</h2>
+        <p class="section-text">
+          A INFINITA nasce com a proposta de unir tecnologia, inteligência operacional e desenvolvimento sob medida,
+          entregando soluções úteis para negócios que exigem confiabilidade, integração e visão de longo prazo.
+        </p>
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon">🎯</div>
+            <h3>Missão</h3>
+            <p>
+              Desenvolver soluções tecnológicas inteligentes que melhorem a eficiência, a segurança e a capacidade operacional dos clientes.
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon">🧭</div>
+            <h3>Visão</h3>
+            <p>
+              Tornar-se referência em integração sistêmica, inspeção veicular inteligente, automação e plataformas digitais especializadas.
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon">🔐</div>
+            <h3>Compromissos</h3>
+            <p>
+              Segurança, clareza técnica, escalabilidade, profissionalismo e soluções construídas para durar e evoluir junto ao negócio.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h3>Pronto para apresentar a INFINITA ao mercado.</h3>
+            <p>
+              Este site já posiciona a empresa com presença digital profissional. A próxima etapa pode incluir páginas de produtos,
+              portal institucional, documentação técnica, formulário comercial e novas áreas como portal.infinita.tec.br e api.infinita.tec.br.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="mailto:admin@infinita.tec.br">Agendar contato</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="container center">
+        <div class="eyebrow">Contato</div>
+        <h2 class="section-title">Vamos construir a próxima etapa.</h2>
+        <p class="section-text">
+          Entre em contato para conhecer as soluções da INFINITA, estruturar um projeto ou discutir integrações, automações e plataformas personalizadas.
+        </p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Fale com a INFINITA</h3>
+            <p>
+              Canal inicial para apresentação institucional, oportunidades comerciais, propostas técnicas e novos projetos.
+            </p>
+            <div class="contact-lines">
+              <div class="contact-line">
+                <strong>Email principal</strong>
+                <a class="link" href="mailto:admin@infinita.tec.br">admin@infinita.tec.br</a>
+              </div>
+              <div class="contact-line">
+                <strong>Site institucional</strong>
+                <a class="link" href="https://infinita.tec.br" target="_blank">https://infinita.tec.br</a>
+              </div>
+              <div class="contact-line">
+                <strong>Domínio corporativo</strong>
+                <span>infinita.tec.br</span>
+              </div>
+            </div>
+          </div>
+          <div class="contact-panel">
+            <h3>Próximas expansões sugeridas</h3>
+            <ul class="list">
+              <li>portal.infinita.tec.br</li>
+              <li>api.infinita.tec.br</li>
+              <li>docs.infinita.tec.br</li>
+              <li>Página exclusiva de produtos</li>
+              <li>Formulário comercial integrado</li>
+              <li>Área institucional com proposta e apresentação</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <div class="container">
-      © INFINITA - Todos os direitos reservados.
+    <div class="container footer-row">
+      <div>© 2026 INFINITA. Todos os direitos reservados.</div>
+      <div class="footer-links">
+        <a href="#solucoes">Soluções</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#empresa">Empresa</a>
+        <a href="#contato">Contato</a>
+      </div>
     </div>
   </footer>
 </body>
